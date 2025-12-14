@@ -1,0 +1,29 @@
+{
+  "name": "single-link-browser-pc",
+  "version": "1.0.0",
+  "description": "Single Link Browser PC Version",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder"
+  },
+  "keywords": [],
+  "author": "Rahul Bisht",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^28.0.0",
+    "electron-builder": "^24.9.1", 
+    "electron-store": "^8.1.0"
+  },
+  "build": {
+    "appId": "com.rahulbisht.singlelinkbrowser",
+    "win": {
+      "target": "nsis",
+      "icon": "icon.png"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  }
+}

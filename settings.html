@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Settings</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    input { width: 100%; padding: 8px; margin-bottom: 10px; box-sizing: border-box; }
+    button { padding: 8px 16px; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <h3>Enter Website URL</h3>
+  <input type="text" id="urlInput" placeholder="https://example.com">
+  <button id="saveBtn">Save</button>
+  <button onclick="window.close()">Cancel</button>
+
+  <script>
+    const { ipcRenderer } = require('electron');
+
+    const urlInput = document.getElementById('urlInput');
+
+    // Get current settings
+    ipcRenderer.send('get-settings');
+    ipcRenderer.on('settings-data', (event, data) => {
+      urlInput.value = data.targetUrl;
+    });
+
+    document.getElementById('saveBtn').addEventListener('click', () => {
+      const newUrl = urlInput.value.trim();
+      if (newUrl) {
+        ipcRenderer.send('save-settings', { targetUrl: newUrl });
+        window.close();
+      }
+    });
+  </script>
+</body>
+</html>
