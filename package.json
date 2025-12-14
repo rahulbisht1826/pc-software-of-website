@@ -10,10 +10,12 @@
   "keywords": [],
   "author": "Rahul Bisht",
   "license": "ISC",
+  "dependencies": {
+    "electron-store": "^8.1.0"
+  },
   "devDependencies": {
     "electron": "^28.0.0",
-    "electron-builder": "^24.9.1", 
-    "electron-store": "^8.1.0"
+    "electron-builder": "^24.9.1"
   },
   "build": {
     "appId": "com.rahulbisht.singlelinkbrowser",
